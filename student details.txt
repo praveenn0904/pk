@@ -1,0 +1,45 @@
+import java.util.*;
+class AgeNotWithinRangeException extends Exception
+{
+
+}
+class NameNotValidException extends Exception{
+    //
+}
+class Main {
+    public static void main(String aa[])throws Exception{
+        Scanner s=new Scanner(System.in);
+        int a=s.nextInt(),b,Student;
+        s.nextLine();
+        String c=s.nextLine(),d;
+        b=s.nextInt();
+        s.nextLine();
+        d=s.nextLine();
+        int e=0;
+            for(char ch : c.toCharArray()){
+                if(Character.isDigit(ch)){
+                    e++;
+                }
+            }
+        
+        try{
+            if(e!=0)
+            {
+                throw new NameNotValidException();
+            }
+            else if(b<15||b>21)
+            {
+                throw new AgeNotWithinRangeException();
+            }
+            
+        }
+        catch (AgeNotWithinRangeException h){
+            System.out.println("Age is not between 15 and 21");
+        }
+        catch (NameNotValidException y)
+        {
+            System.out.println("Name is not Valid");
+        }
+        System.out.print(a+" "+c+" "+b+" "+d);
+    }
+}

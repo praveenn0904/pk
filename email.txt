@@ -1,0 +1,59 @@
+  import java.util.*;
+    class Msg extends Exception
+    {
+        Msg(String a)
+        {
+            super(a);
+        }
+    }
+    class Main{
+        public static void main(String aap[]) throws Msg{
+            Scanner sc=new Scanner(System.in);
+            String str= sc.nextLine(), DotException, DomainException,AtTheRateException ;
+            try{
+              int d=0,a=0, n=str.length();
+               for(int i=0;i<n;i++)
+               {
+                   if(str.charAt(i)=='.')
+                   {
+                       d++;
+                       if(d==2)
+                       {
+                           throw new Msg ("DotException: Invalid Dot usage");
+                       }
+                       
+                   }
+                   if(str.charAt(i)=='@'){
+                       a++;
+                       if(a==2){
+                           throw new Msg ("AtTheRateException: Invalid @ usage");
+                       }
+                   }
+               }
+              if(vaild(str))
+              {
+                  throw new Msg("DomainException: Invalid Domain");
+              }
+               
+               System.out.print("Valid email address");
+               
+            }
+            catch (Msg e){
+                System.out.println(e.getMessage());
+                System.out.print("Invalid email address");
+            }
+        }
+           private static boolean vaild(String a)
+           {
+               String[] b={"in","com","net","biz"};
+               for(String  ch :b)
+               {
+                   if(a.endsWith(ch)){
+                       return false;
+                   }
+               }
+               return true;
+           }
+     
+   }
+
